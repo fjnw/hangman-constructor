@@ -1,10 +1,33 @@
 
+// chooses random word
+var WordGen = function(){
+	this.wordBank = ["APP", "BOW", "CAR"];
+	this.word;
+
+	this.wordPick = function() {
+		word = this.wordBank[Math.floor(Math.random() * this.wordBank.length)];
+  		//console.log("Random word: " + word);
+
+  		// calls initWord() to convert word to blank lines
+  		letterJS.initWord(word);
+	};
+};
+
+// export to main.js
+module.exports = WordGen;
+
+var Word = new WordGen();
+
+
+//=============================================================
+
+
 // only NPM used
 var inquirer = require('inquirer');
 
 // main.js used to restart game
 // var Game = require("./main.js");
-// var initGame = new Game();
+// var initGame = new Game.Game();
 
 
 // Incomplete = displayed to user. Complete = checked against
@@ -48,6 +71,14 @@ var Letter = function(){
 	};
 }
 
+
+var letterJS = new Letter();
+
+
+//=============================================================
+
+
+
 // prompts users & manages game
 var userGuess = function() {
 
@@ -68,7 +99,8 @@ var userGuess = function() {
    		// user wants to Restart
    		if (response.continue == "Yes") {
    			lives = 10;
-   			//initGame.namePrompt();
+   			
+   			Word.wordPick();
 
    		// user wants to end
    		} else {
@@ -119,5 +151,3 @@ var validate = function(guess) {
 	userGuess();
 };
 
-
-module.exports = Letter

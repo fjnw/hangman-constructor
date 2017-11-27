@@ -3,7 +3,7 @@
 var inquirer = require('inquirer');
 
 // word.js to populate random word from bank
-var WordGen = require('./word.js');
+var WordGen = require('./letter.js');
 var Word = new WordGen();
 
 // initial game
@@ -31,6 +31,3 @@ var Game = function() {
 // initiates game with name prompt, followed by picking random word
 var initGame = new Game();
 initGame.namePrompt();
-
-// send to letter.js to restart game
-module.exports = Game;
