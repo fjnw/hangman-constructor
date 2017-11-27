@@ -1,25 +1,21 @@
 
+// uses letter.js to obtain users
 var Letter = require("./letter.js");
 var letterJS = new Letter();
 
-
+// chooses random word
 var WordGen = function(){
-	this.wordBank = ["APPLE", "BOW", "CARROT", "DRUM"];
+	this.wordBank = ["APP", "BOW", "CAR"];
 	this.word;
-	// this.alphabet;
-	// this.alphabetGen = function(c1 = 'a', c2 = 'z') {
-	//     var a = 'abcdefghijklmnopqrstuvwxyz'.split('');
-	//     this.alphabet = (a.slice(a.indexOf(c1), a.indexOf(c2) + 1));
 
-	//     this.wordPick();
-	// };
 	this.wordPick = function() {
 		word = this.wordBank[Math.floor(Math.random() * this.wordBank.length)];
-  		console.log("Random word: " + word);
+  		//console.log("Random word: " + word);
 
+  		// calls initWord() to convert word to blank lines
   		letterJS.initWord(word);
 	};
 };
 
-
+// export to main.js
 module.exports = WordGen;
