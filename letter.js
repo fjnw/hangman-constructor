@@ -109,7 +109,7 @@ var userGuess = function() {
 
    // if user runs out of lives (game over)
 	} else if (lives === 0) {
-		console.log("\nGame over, you lost\n")
+		return console.log("\nGame over, you lost\n")
 
 	// if letters & lives available
 	} else {
@@ -132,6 +132,8 @@ var userGuess = function() {
 // validate user guess
 var validate = function(guess) {
 
+	var incorrect = false
+
 	// iterate word length & find matches w/ answer key
 	for (i=0; i<chosenWord.incomplete.length; i++) {
 
@@ -141,6 +143,19 @@ var validate = function(guess) {
 
 				correctLetters --;
 				lives --;
+
+		} else {
+			incorrect = true;
+		}
+	}
+
+	if (incorrect === true) {
+		lives --;
+		console.log(lives)
+		incorrect = false;
+
+		if (lives === 0 ) {
+			return console.log("game over. you lost")
 		}
 	}
 	// print updated word
