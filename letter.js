@@ -25,11 +25,6 @@ var Word = new WordGen();
 // only NPM used
 var inquirer = require('inquirer');
 
-// main.js used to restart game
-// var Game = require("./main.js");
-// var initGame = new Game.Game();
-
-
 // Incomplete = displayed to user. Complete = checked against
 var chosenWord = {
 	incomplete: [],
@@ -98,7 +93,11 @@ var userGuess = function() {
 
    		// user wants to Restart
    		if (response.continue == "Yes") {
+   			
+   			// reset parameters
    			lives = 10;
+				chosenWord.incomplete = [];
+				chosenWord.complete = [];
    			
    			Word.wordPick();
 
